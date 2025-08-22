@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Roblox ปลอม</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0e0e0;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #232527;
+      color: white;
+      padding: 10px 0;
+      font-size: 24px;
+    }
+    .game-box {
+      background-color: white;
+      margin: 40px auto;
+      padding: 20px;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    button {
+      background-color: #ff5757;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff2e2e;
+    }
+  </style>
+</head>
+<body>
+
+  <header>🔺 Roblox ปลอม</header>
+
+  <div class="game-box">
+    <h2>Mini Obby Game</h2>
+    <p>กระโดดหลบสิ่งกีดขวางเพื่อชนะ!</p>
+    <button onclick="startGame()">เริ่มเกม</button>
+    <p id="game-status" style="margin-top:20px; font-weight: bold;"></p>
+  </div>
+
+  <script>
+    function startGame() {
+      const outcome = Math.random() > 0.5 ? "คุณชนะแล้ว! 🎉" : "คุณแพ้แล้ว! 😢";
+      document.getElementById("game-status").textContent = outcome;
+    }
+  </script>
+
+</body>
+</html>
