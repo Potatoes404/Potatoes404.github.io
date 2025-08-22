@@ -1,61 +1,128 @@
 <!DOCTYPE html>
-<html lang="th">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Roblox ปลอม</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #e0e0e0;
-      text-align: center;
-      margin: 0;
-      padding: 0;
+<title>เกมกระโดดหนีสิ่งกีดขวาง</title>
+<style>
+  body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    margin: 0;
+  }
+  .game-container {
+    width: 600px;
+    height: 200px;
+    border: 2px solid #333;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  #player {
+    width: 30px;
+    height: 30px;
+    background-color: green;
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+  }
+  .obstacle {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    position: absolute;
+    bottom: 0;
+    animation: obstacle-move 3s linear infinite;
+  }
+  @keyframes obstacle-move {
+    0% {
+      right: -20px;
     }
-    header {
-      background-color: #232527;
-      color: white;
-      padding: 10px 0;
-      font-size: 24px;
+    100% {
+      right: 100%;
     }
-    .game-box {
-      background-color: white;
-      margin: 40px auto;
-      padding: 20px;
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    button {
-      background-color: #ff5757;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #ff2e2e;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <header>🔺 Roblox ปลอม</header>
+<h1>เกมกระโดดหนีสิ่งกีดขวาง</h1>
+<div class="game-container">
+  <div id="player"></div>
+  <div id="obstacle"></div>
+</div>
+<p>แตะหน้าจอ หรือกดปุ่มใดๆ เพื่อกระโดด</p>
+<p id="score">คะแนน: 0</p>
 
-  <div class="game-box">
-    <h2>Mini Obby Game</h2>
-    <p>กระโดดหลบสิ่งกีดขวางเพื่อชนะ!</p>
-    <button onclick="startGame()">เริ่มเกม</button>
-    <p id="game-status" style="margin-top:20px; font-weight: bold;"></p>
-  </div>
+<script>
+  const player = document.getElementById('player');
+  const obstacle = document.getElementById('obstacle');
+  const scoreDisplay = document.getElementById('score');
+  
+  let score = 0;
+  let isJumping = false;
+  let gameInterval;
+  let scoreInterval;
 
-  <script>
-    function startGame() {
-      const outcome = Math.random() > 0.5 ? "คุณชนะแล้ว! 🎉" : "คุณแพ้แล้ว! 😢";
-      document.getElementById("game-status").textContent = outcome;
+  // Jump function
+  function jump() {
+    if (isJumping) return;
+    isJumping = true;
+
+    let jumpHeight = 0;
+    const jumpUpInterval = setInterval(() => {
+      if (jumpHeight >= 100) {
+        clearInterval(jumpUpInterval);
+        const jumpDownInterval = setInterval(() => {
+          if (jumpHeight <= 0) {
+            clearInterval(jumpDownInterval);
+            isJumping = false;
+            player.style.bottom = '0px';
+          }
+          jumpHeight -= 5;
+          player.style.bottom = jumpHeight + 'px';
+        }, 20);
+      }
+      jumpHeight += 5;
+      player.style.bottom = jumpHeight + 'px';
+    }, 20);
+  }
+
+  // Detect collision
+  function detectCollision() {
+    const playerRect = player.getBoundingClientRect();
+    const obstacleRect = obstacle.getBoundingClientRect();
+
+    if (playerRect.right > obstacleRect.left &&
+        playerRect.left < obstacleRect.right &&
+        playerRect.bottom > obstacleRect.top) {
+      clearInterval(gameInterval);
+      clearInterval(scoreInterval);
+      alert('เกมโอเวอร์! คะแนนของคุณคือ: ' + score);
+      location.reload(); // Reload the page to restart
     }
-  </script>
+  }
+
+  // Update score
+  function updateScore() {
+    score++;
+    scoreDisplay.innerText = 'คะแนน: ' + score;
+  }
+
+  // Event listeners
+  document.addEventListener('keydown', jump);
+  document.addEventListener('touchstart', jump);
+
+  // Game loop
+  function startGame() {
+    gameInterval = setInterval(detectCollision, 10);
+    scoreInterval = setInterval(updateScore, 100);
+  }
+
+  startGame();
+</script>
 
 </body>
 </html>
