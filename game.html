@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>เกมกระโดดหนีสิ่งกีดขวาง</title>
+<title>เกมRoblox</title>
 <style>
   body {
     background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     flex-direction: column;
     margin: 0;
+    text-align: center;
   }
   .game-container {
     width: 600px;
@@ -19,6 +21,7 @@
     background-color: #fff;
     position: relative;
     overflow: hidden;
+    margin-bottom: 20px;
   }
   #player {
     width: 30px;
@@ -27,6 +30,7 @@
     position: absolute;
     bottom: 0;
     left: 50px;
+    transition: bottom 0.2s ease-out;
   }
   .obstacle {
     width: 20px;
@@ -51,7 +55,7 @@
 <h1>เกมกระโดดหนีสิ่งกีดขวาง</h1>
 <div class="game-container">
   <div id="player"></div>
-  <div id="obstacle"></div>
+  <div class="obstacle" id="obstacle"></div>
 </div>
 <p>แตะหน้าจอ หรือกดปุ่มใดๆ เพื่อกระโดด</p>
 <p id="score">คะแนน: 0</p>
@@ -71,23 +75,12 @@
     if (isJumping) return;
     isJumping = true;
 
-    let jumpHeight = 0;
-    const jumpUpInterval = setInterval(() => {
-      if (jumpHeight >= 100) {
-        clearInterval(jumpUpInterval);
-        const jumpDownInterval = setInterval(() => {
-          if (jumpHeight <= 0) {
-            clearInterval(jumpDownInterval);
-            isJumping = false;
-            player.style.bottom = '0px';
-          }
-          jumpHeight -= 5;
-          player.style.bottom = jumpHeight + 'px';
-        }, 20);
-      }
-      jumpHeight += 5;
-      player.style.bottom = jumpHeight + 'px';
-    }, 20);
+    player.style.bottom = '100px';
+
+    setTimeout(() => {
+      player.style.bottom = '0px';
+      isJumping = false;
+    }, 500);
   }
 
   // Detect collision
