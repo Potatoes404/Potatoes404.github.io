@@ -3,111 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>แนะนำตัวเอง</title>
+  <title>หน้าแนะนำตัวเอง</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    /* ฟอนต์จาก Google Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;700&display=swap');
-
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Kanit', sans-serif;
+      font-family: 'Sarabun', sans-serif;
     }
 
     body {
-      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
       color: #333;
-      padding: 40px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
     }
 
-    .card {
-      background: white;
+    .container {
+      background: #fff;
       border-radius: 16px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
+      max-width: 700px;
       width: 100%;
       padding: 40px;
       text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
     }
 
     .profile-img {
-      width: 140px;
-      height: 140px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid #00bcd4;
+      border: 5px solid #64b5f6;
       margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
+      color: #1565c0;
       margin-bottom: 10px;
-      color: #00796b;
     }
 
-    h3 {
-      font-weight: 300;
+    h2 {
+      font-size: 1.2rem;
       color: #555;
+      font-weight: 300;
       margin-bottom: 20px;
     }
 
     p {
       font-size: 1.1rem;
-      line-height: 1.6;
+      line-height: 1.7;
+      margin-bottom: 25px;
     }
 
-    .social-links {
-      margin-top: 25px;
-    }
-
-    .social-links a {
+    .buttons a {
+      display: inline-block;
       margin: 0 10px;
+      padding: 10px 20px;
+      background-color: #1e88e5;
+      color: white;
       text-decoration: none;
-      color: #00acc1;
-      font-weight: 500;
-      transition: color 0.2s;
+      border-radius: 8px;
+      transition: background 0.3s;
     }
 
-    .social-links a:hover {
-      color: #00796b;
+    .buttons a:hover {
+      background-color: #1565c0;
     }
 
     @media (max-width: 600px) {
-      .card {
-        padding: 20px;
+      .container {
+        padding: 25px 20px;
       }
+
+      .profile-img {
+        width: 100px;
+        height: 100px;
+      }
+
       h1 {
-        font-size: 1.5rem;
-      }
-      p {
-        font-size: 1rem;
+        font-size: 1.6rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <img src="https://i.pravatar.cc/300?img=15" alt="รูปโปรไฟล์" class="profile-img">
-    <h1>สวัสดีครับ! ผมชื่อธีรภัทร</h1>
-    <h3>นักพัฒนาเว็บไซต์ | ชอบเรียนรู้สิ่งใหม่ ๆ</h3>
+
+  <div class="container">
+    <img src="https://i.pravatar.cc/300?img=12" alt="รูปโปรไฟล์" class="profile-img">
+    <h1>แนะนำตัวเอง</h1>
+    <h2>โรงเรียนมารีย์วิทยา</h2>
     <p>
-      ผมเป็นนักพัฒนาเว็บที่มีความหลงใหลในงานออกแบบและเทคโนโลยีใหม่ ๆ มีประสบการณ์ในการใช้ HTML, CSS, JavaScript และเครื่องมืออื่น ๆ ในการสร้างเว็บไซต์ที่สวยงามและใช้งานได้จริง
+     นส.ณปภัช แสงรวีชัย
+      เลขที่24 ม.5/7
     </p>
-    <div class="social-links">
-      <a href="#">Facebook</a> |
-      <a href="#">GitHub</a> |
+    <div class="buttons">
+      <a href="#">Facebook</a>
+      <a href="#">GitHub</a>
       <a href="#">LinkedIn</a>
     </div>
   </div>
+
 </body>
 </html>
