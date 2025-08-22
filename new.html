@@ -1,100 +1,89 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>แนะนำตัว - นางสาวณปภัช แสงรวีชัย</title>
-  <style>
-    body {
-      font-family: 'Sarabun', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-      color: #333;
-    }
-
-    header {
-      background-color: #4CAF50;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background-color: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 10px;
-    }
-
-    img.profile {
-      display: block;
-      margin: 0 auto 20px;
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #4CAF50;
-    }
-
-    h2 {
-      text-align: center;
-      margin-top: 0;
-    }
-
-    p {
-      line-height: 1.6;
-      font-size: 1.1em;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #777;
-      font-size: 0.9em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เว็บแนะนำตัว</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+        header {
+            background-color: #0077cc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background: #005fa3;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav button {
+            background: none;
+            border: none;
+            color: white;
+            margin: 0 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        section {
+            display: none;
+            padding: 30px;
+        }
+        section.active {
+            display: block;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>เว็บเพจ</h1>
-    <p>แนะนำตัว</p>
-  </header>
+    <header>
+        <h1>ยินดีต้อนรับสู่เว็บไซต์แนะนำตัว</h1>
+    </header>
 
-  <div class="container">
-    <img src="https://via.placeholder.com/150" alt="รูปโปรไฟล์" class="profile" />
-    <h2>เกี่ยวกับฉัน</h2>
-    <p>
-      นางสาวณปภัช แสงรวีชัย ม.5/7 เลขที่ 24
-      ชื่อเล่นชื่อ ขนมผิง
-    </p>
+    <nav>
+        <button onclick="showPage('intro')">หน้าแนะนำตัว</button>
+        <button onclick="showPage('education')">ประวัติการศึกษา</button>
+    </nav>
 
-    <h2>ทักษะ</h2>
-    <ul>
-      <li>HTML / CSS / JavaScript</li>
-      <li>React / Vue</li>
-      <li>Node.js / Express</li>
-      <li>MySQL / MongoDB</li>
-    </ul>
+    <div class="container">
+        <!-- หน้าแนะนำตัว -->
+        <section id="intro" class="active">
+            <h2>เกี่ยวกับฉัน</h2>
+            <p>สวัสดีครับ/ค่ะ! ฉันชื่อ <strong>ณปภัช แสงรวีชัย</strong> อายุ 16 ปี สนใจด้านวิศวกรรม สาขาโยธา UI/UX</p>
+            <p>งานอดิเรกคือ อ่านหนังสือ กิน นอน และเขียนโปรแกรม</p>
+        </section>
 
-    <h2>ติดต่อ</h2>
-    <p>อีเมล: napapatsaengraveechai@gmail.com<br>
-       โทร: 065-123-9630
-    </p>
-  </div>
+        <!-- หน้าประวัติการศึกษา -->
+        <section id="education">
+            <h2>ประวัติการศึกษา</h2>
+            <ul>
+                <li><strong>ประถมศึกษา:</strong> โรงเรียนสารสาสน์วเทศนครราชสีมา</li>
+                <li><strong>มัธยมศึกษา:</strong> โรงเรียนมารีย์วิทยา</li>
+            </ul>
+        </section>
+    </div>
 
-  <footer>
-    © 2025 ณปภัช แสงรวีชัย. สงวนลิขสิทธิ์.
-  </footer>
+    <script>
+        function showPage(pageId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
-
